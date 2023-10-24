@@ -34,6 +34,9 @@ def format_response(weather):
     except KeyError:
         return "Error formatting weather data."
 
+def close_app():
+    root.destroy()
+
 root = tk.Tk()
 root.title("Weather App")
 root.geometry("600x500")
@@ -62,6 +65,17 @@ frame_two = tk.Frame(bg_lbl, bg="#42c2f4", bd=5)
 frame_two.place(x=80, y=130, width=450, height=300)
 
 result = tk.Label(frame_two, font=('times new roman', 16), bg='white', justify='left')
-result.place(relwidth=1, relheight=1)
+result.place(relwidth=1, relheight=0.6)
+
+# Added greeting label
+greeting_label = tk.Label(frame_two, text='Welcome to the Weather App!', font=('times new roman', 16), bg='white', fg='green')
+greeting_label.place(x=80, y=180)
+
+# Exit button and thanks label
+exit_btn = tk.Button(frame_two, text='Exit', fg='red', font=('times new roman', 16, 'bold'), command=close_app)
+exit_btn.place(x=250, y=400)
+
+thanks_label = tk.Label(frame_two, text='Thanks for using the Weather App!', font=('times new roman', 12), bg='white')
+thanks_label.place(x=140, y=440)
 
 root.mainloop()
